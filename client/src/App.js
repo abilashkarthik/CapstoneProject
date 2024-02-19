@@ -4,16 +4,20 @@ import { ChakraProvider } from '@chakra-ui/react'
 import ProductsScreen from './screens/ProductsScreen';
 import {Route , BrowserRouter as Router , Routes} from 'react-router-dom';
 import Header from './components/Header';
+import LandingScreen from './screens/LandingScreen';
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
-  // 2. Wrap ChakraProvider at the root of your app
+  
   return (
     <ChakraProvider>
       <Router>
       <Header/>
       <main>
         <Routes>
-          <Route path='/' element={<ProductsScreen></ProductsScreen>} />
+          <Route path='/products' element={<ProductsScreen></ProductsScreen>} />
+          <Route path='/' element={<LandingScreen></LandingScreen>} />
+          <Route path='/product/:id' element={<ProductScreen></ProductScreen>} />
         </Routes>
       </main>
       </Router>

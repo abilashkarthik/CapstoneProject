@@ -3,22 +3,33 @@ import {BiExpand} from 'react-icons/bi';
 import {addToFavourites , removefromFavourites} from '../redux/actions/productActions';
 import {useSelector , useDispatch} from 'react-redux';
 import {MdOutlineFavorite , MdOutlineFavoriteBorder} from 'react-icons/md';
+import React , {useState} from 'react'
+import {Link as ReactLink} from 'react-router-dom';
 
-import React from 'react'
 
 const ProductCard = ({product }, {loading}) => {
 
     const dispatch = useDispatch()
     const {favourites} = useSelector((state) => state.products);
+    const [isShown , setIsShown] = useState(false);
+
   return (
-    <Skeleton isLoaded={!loading} _hover={{size:1.5}}>
+    <Skeleton isLoaded={!loading}>
     <Box
         _hover={{transform: 'scale(1.1)' , transitionDuration:'0.5s'}} 
         borderWidth='1px'
         overflow='hidden'
         p='4'
         shadow='md'>
-        <Image src={product.images[1]}/>
+        <Image 
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=>setIsShown(false)}
+        src={product.images[isShown && product.images.length === 2 ? 1 : 0]}
+        fallbackSrc='https://via.placeholer.com/150'
+        alt={product.name}
+        height='200px'
+        
+        />
         {product.stock < 5 ? (
             <Badge colorScheme='yellow'> only {product.stock} </Badge>
         ): product.stock < 1 ?(
@@ -55,7 +66,8 @@ const ProductCard = ({product }, {loading}) => {
     
 }  
 <IconButton icon={<BiExpand size='20'/>}
-           colorScheme='cyan' size='sm' />
+            as ={ReactLink} to={`/product/${product._id}`}
+            colorScheme='cyan' size='sm' />
     </flex>
     
    
