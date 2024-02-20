@@ -10,6 +10,7 @@ import  NavLink  from './NavLink';
 import ColorModeToggle from './ColorModeToggle'
 import {BiUserCheck} from  'react-icons/bi'
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { TbShoppingCart } from 'react-icons/tb';
 
 const Links = [
   {name: 'Products' , route : '/products'} ,
@@ -24,7 +25,8 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const { favouritesToggled } = useSelector((state) => state.products);
-
+  const { cartItems } = useSelector((state) => state.Cart);
+ 
   useEffect(() => {} , [favouritesToggled , dispatch]);
 
   return (
@@ -34,6 +36,19 @@ const Header = () => {
       <Flex display={{base : 'flex' , md : 'none'}} alignItems='center'>
          <IconButton bg='parent' size ='md' icon= {isOpen ? <CloseIcon /> : <HamburgerIcon />} 
          onClick={isOpen ? onClose : onOPen}/>
+      	<IconButton
+							ml='12'
+							position='absolute'
+							icon={<TbShoppingCart size='20px' />}
+							as={ReactLink}
+							to='/cart'
+							variant='ghost'
+						/>
+         {cartItems.length > 0 && (
+							<Text fontWeight='bold' fontStyle='italic' position='absolute' ml='74px' mt='-6' fontSize='sm'>
+								{cartItems.length}
+							</Text>
+						)}
       </Flex>
          <HStack spacing ='8' alignItems='center'>
           <Box alignItems='center' display='flex' as= {ReactLink} to ='/'>
@@ -45,6 +60,14 @@ const Header = () => {
             <NavLink route ={link.route} key ={link.route}><Text fontWeight='medium'>{link.name}</Text>
             </NavLink>
             )}
+            <Box>
+								<IconButton icon={<TbShoppingCart size='20px' />} as={ReactLink} to='/cart' variant='ghost' />
+								{cartItems.length > 0 && (
+									<Text fontWeight='bold' fontStyle='italic' position='absolute' ml='26px' mt='-6' fontSize='sm'>
+										{cartItems.length}
+									</Text>
+								)}
+							</Box>
             <ColorModeToggle/>
             {favouritesToggled ? (
         <IconButton icon={<MdOutlineFavorite size='20px' onClick={()=> dispatch(toggleFavourites(false))}/>}
