@@ -50,13 +50,18 @@ export const productsSlice =createSlice({
     setFavouritesToggle : (state,{payload}) =>{
         state.favouritesToggled = payload;
     },
+    productReviewed: (state, { payload }) => {
+        state.loading = false;
+        state.error = null;
+        state.reviewed = payload;
+    },
    },
 
 
 });
 
 export const {
-    setLoading, setError , setProducts , setPagination ,setFavourites , setFavouritesToggle , setProduct
+    setLoading, setError , setProducts , setPagination ,setFavourites , setFavouritesToggle , setProduct ,productReviewed
 } = productsSlice.actions ;
 
 export default productsSlice.reducer;
