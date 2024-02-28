@@ -6,6 +6,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+# Project Functionality
+1.This is a Mobile store where you can see all the products
+2.We have a Sign in and Sign Up Feature and only if you have signed you will be able to checkout
+with the product you have added to the cart 
+The user registration processwhich sends out a mail to your mailbox and you can register for first time login users.
+We have forgot password Feature which sends a mail to reset your password.
+3.We have Hotdeals , Contact and Services as static links.
+4.We have Color toggle Switcher
+5.We can add to our Favourites using Favourites icon
+6.We have pagination feature
+7.we have footer and we have static links which we can extend.
+8. We have Add to Cart , remove to cart Feature
+9. We have Checkout Feature and it after adding shipping information and click on payment it 
+successfully checkout process is completed.
+10.We have Product Card Feature where you can click the expand Icon and Add Quantity , Add to cart
+11. We can write reviews and publish (only if your signed in)
+
 ### `npm start`
 
 Runs the app in the development mode.\
