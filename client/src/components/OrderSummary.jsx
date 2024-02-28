@@ -3,7 +3,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { Link as ReactLink } from 'react-router-dom';
 
-const OrderSummary = () => {
+const OrderSummary = ({ checkoutSreen = false }) => {
   const { subtotal, shipping } = useSelector((state) => state.Cart);
 
 	return (
@@ -37,12 +37,13 @@ const OrderSummary = () => {
 				</Flex>
 			</Stack>
 			<Button
-				as={ReactLink}
-				to='/checkout'
-				colorScheme='cyan'
-				size='lg'
-				rightIcon={<FaArrowRight />}>
-				Checkout
+			hidden={checkoutSreen}
+			as={ReactLink}
+			to='/checkout'
+			colorScheme='cyan'
+			size='lg'
+			rightIcon={<FaArrowRight />}>
+			Checkout
 			</Button>
 		</Stack>
 	);

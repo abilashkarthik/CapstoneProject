@@ -96,7 +96,7 @@ const Header = () => {
 					<HStack spacing='8' alignItems='center'>
 						<Box alignItems='center' display='flex' as={ReactLink} to='/'>
 							<Icon as={BsPhoneFlip} h='6' w='6' color={mode('black', 'yellow.200')} />
-							<Text as='b'>Tech Lines</Text>
+							<Text as='b'>Mobile Store</Text>
 						</Box>
 
 						<HStack as='nav' spacing='4' display={{ base: 'none', md: 'flex' }}>
@@ -146,12 +146,6 @@ const Header = () => {
 										</Text>
 									</HStack>
 									<Divider py='1' />
-									<MenuItem as={ReactLink} to='/order-history'>
-										Order History
-									</MenuItem>
-									<MenuItem as={ReactLink} to='/profile'>
-										Profile
-									</MenuItem>
 									{userInfo.isAdmin && (
 										<>
 											<MenuDivider />

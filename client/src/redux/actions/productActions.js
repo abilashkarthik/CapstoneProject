@@ -15,8 +15,16 @@ export const getProducts =(page , favouriteToggle) => async (dispatch) =>{
     }
     catch(error)
     {
-        dispatch(setError(error));
-    }
+		dispatch(
+			setError(
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+					? error.message
+					: 'An expected error has occured. Please try again later.'
+			)
+		);
+	}
 };
 
 export const addToFavourites =(id) => async (dispatch , getState) =>{

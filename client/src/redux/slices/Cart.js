@@ -9,7 +9,7 @@ const calculateSubTotal = (cartState) => {
 export const initialState = {
     loading : false,
     error : null,
-    cartItems :JSON.parse(localStorage.getItem('cartItmes'))?? [],
+    cartItems :JSON.parse(localStorage.getItem('cartItems'))?? [],
     shipping : JSON.parse(localStorage.getItem('shipping'))?? Number(4.99),
     subtotal: localStorage.getItem('cartItems') ? calculateSubTotal(JSON.parse(localStorage.getItem('cartItems'))) : 0,
 };
