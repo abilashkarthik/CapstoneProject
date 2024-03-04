@@ -27,12 +27,19 @@ const stripePayment = async (req, res) => {
 		});
 	}
 
-	for (let item of data.cartItems) {
-		lineItems.push({
-			price: item.stripeId,
-			quantity: item.qty,
-		});
-	};
+
+	 lineItems = data.cartItems.map((item) => {
+		return {
+		  price_data: {
+			currency: "inr",
+			product_data: {
+			  name: item.name,
+			},
+			unit_amount: item.price * 100,
+		  },
+		  quantity: item.qty,
+		};
+	  });
 
 	const session = await stripe.checkout.sessions.create({
 		line_items: lineItems,

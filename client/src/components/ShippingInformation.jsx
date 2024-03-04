@@ -27,8 +27,8 @@ const ShippingInformation = () => {
 	const navigate = useNavigate();
 	const onSubmit = async (values) => {
 		dispatch(setAddress(values));
-		//dispatch(setPayment());
-		navigate("/success");
+		dispatch(setPayment());
+		//navigate("/success");
 	};
 
 	return (
@@ -99,7 +99,7 @@ const ShippingInformation = () => {
 							colorScheme='cyan'
 							w='100%'
 							as={ReactLink}
-							to='/success'
+							to='/payment'
 							onClick={formik.handleSubmit}>
 							Continue to Payment
 						</Button>

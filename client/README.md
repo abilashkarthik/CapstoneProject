@@ -20,6 +20,12 @@ We have forgot password Feature which sends a mail to reset your password.
 8. We have Add to Cart , remove to cart Feature
 9. We have Checkout Feature and it after adding shipping information and click on payment it 
 successfully checkout process is completed.
+10.Have used STRIPE API for completing the payment and please use only india address while checking out
+and  the below card details 
+since STRIPE has limitations in Test Mode
+4000003560000008
+or refer the below link 
+https://docs.stripe.com/testing
 10.We have Product Card Feature where you can click the expand Icon and Add Quantity , Add to cart
 11. We can write reviews and publish (only if your signed in)
 
